@@ -1,0 +1,14 @@
+{
+    "manifest_version": 3,
+    "name": "Ad Blocker for zhihu",
+    "version": "1.0",
+    "description": "Blocks ads in Banner-adTag containers",
+    "content_scripts": [{
+      "matches": ["*://*.zhihu.com/*"],
+      "js": ["content.js"],
+      "run_at": "document_end"
+    }],
+    "icons": {
+      "128": "icon_128.png"
+    }
+  }

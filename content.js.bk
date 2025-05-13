@@ -1,0 +1,28 @@
+// 立即移除现有广告
+const removeAds = () => {
+    document.querySelectorAll('div.Banner-adTag').forEach(ad => {
+      ad.remove();
+      console.log('Removed ad element:', ad);
+    });
+  }
+  
+  // 处理动态加载的广告
+  const observer = new MutationObserver((mutations) => {
+    mutations.forEach(mutation => {
+      if (mutation.addedNodes.length) {
+        removeAds();
+      }
+    });
+  });
+  
+  // 初始化逻辑
+  document.addEventListener('DOMContentLoaded', () => {
+    // 首次移除
+    removeAds();
+    
+    // 监听DOM变化
+    observer.observe(document.body, {
+      childList: true,
+      subtree: true
+    });
+  });
